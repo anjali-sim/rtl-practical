@@ -1,21 +1,40 @@
 # Testing React Apps
 
-This is the starter project for my Reacting testing course where you'll learn everything you need to know to effectively test React apps. You can find the full course at: 
+This is a starter project for learning how to effectively test React apps.
 
-https://codewithmosh.com 
+## About this Project
 
-## About this Project 
+This is a React app built with the following technologies and libraries:
 
-This is a React app built with the following technologies and libraries: 
+- Auth0
+- Tailwind CSS
+- Radix UI
+- React Router
+- React Query
+- Redux Toolkit
 
-- Auth0 
-- Tailwind 
-- RadixUI
-- React Router 
-- React Query  
-- Redux Toolkit 
+## Features
 
-Please follow these instructions carefully to setup this project on your machine. 
+- User authentication with Auth0
+- Product browsing and management
+- Shopping cart functionality
+- Admin panel for managing products and users
+- Responsive design with Tailwind CSS
+- Comprehensive test suite with Vitest
+
+## Installation
+
+1. Clone the repository:
+
+   ```bash
+   git clone https://github.com/anjali-sim/rtl-practical.git
+   cd rtl-practical
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
 
 ## Setting up Auth0 for Authentication
 
@@ -35,35 +54,68 @@ Please follow these instructions carefully to setup this project on your machine
 3. **Configure Application Settings:**
 
    - On the application settings page, configure the following settings:
-     - Allowed Callback URLs: `http://localhost:5173` 
-     - Allowed Logout URLs: `http://localhost:5173` 
+     - Allowed Callback URLs: `http://localhost:5173`
+     - Allowed Logout URLs: `http://localhost:5173`
      - Allowed Web Origins: `http://localhost:5173`
    - Save the changes.
 
-4. **Obtain Auth0 Domain and ClientID:**
+4. **Obtain Auth0 Domain and Client ID:**
 
    - On the application settings page, you will find your Auth0 Domain and Client ID near the top of the page.
    - Copy the Auth0 Domain (e.g., `your-auth0-domain.auth0.com`) and Client ID (e.g., `your-client-id`).
 
-5. **Create a `.env.local` File:**
+5. **Create Environment Variables:**
 
-   - In the root directory of the project, you'll find a sample `.env` file. Make a copy and save it as `.env.local`.
-   - Replace the Auth0 Domain and Client ID with the actual values you obtained from Auth0.
-
+   - Create a `.env.local` file in the root directory of the project.
+   - Add the following environment variables:
+     ```
+     VITE_AUTH0_DOMAIN=your-auth0-domain.auth0.com
+     VITE_AUTH0_CLIENT_ID=your-client-id
+     ```
 
 ## Running the App
 
 Now that you have set up Auth0 and configured your environment variables, you can run the React app using the following commands:
 
 ```bash
-# Install dependencies
-npm install
-
-# Start the development server
+# Start both the backend (JSON Server) and frontend (Vite dev server)
 npm start
 ```
 
-This will start the back-end process at `http://localhost:3000`. If port 3000 is in use on your machine, update the port number in the following files and run `npm start` again: 
+This will start:
 
-- json-server.json
-- src/main.tsx
+- The backend API server at `http://localhost:3000`
+- The frontend development server at `http://localhost:5173`
+
+If port 3000 is in use on your machine, update the port number in `json-server.json` and run `npm start` again.
+
+## Testing
+
+This project includes a comprehensive test suite using Vitest. To run the tests:
+
+```bash
+# Run all tests
+npm test
+
+# Run tests with UI
+npm run test:ui
+
+# Run tests in watch mode
+npm test -- --watch
+```
+
+## Project Structure
+
+```
+src/
+├── components/     # Reusable UI components
+├── pages/          # Page components
+├── hooks/          # Custom React hooks
+├── providers/      # Context providers
+├── store/          # Redux store and slices
+├── data/           # Mock data for JSON Server
+├── validationSchemas/  # Zod validation schemas
+└── ...
+
+tests/              # Test files
+```
